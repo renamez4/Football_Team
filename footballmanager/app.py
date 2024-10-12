@@ -1,13 +1,17 @@
 from flask import Flask, request, render_template, redirect, url_for, flash, session
 import mysql.connector
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 
 
 db_config = {
-    'user': 'root',
-    'password': '',
+    'user': os.getenv('DB_USER'),
+    'password': os.getenv('DB_PASS'),
     'host': '127.0.0.1',
     'database': 'project2'
 }
@@ -192,4 +196,4 @@ def logout():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
