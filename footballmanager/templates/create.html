@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Team</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/create.css') }}">
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <img src="/static/image/LOGO.png" alt="Football">
+            <ul>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/sport">Sport</a></li>
+                <li><a href="/join">Team</a></li>
+            </ul>
+            <a href="/account" class="account">Account</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <ul>
+                <li><a href="#">Team</a></li>
+                <li><a href="#">List Team</a></li>
+                <li><a href="/create">New Team</a></li>
+            </ul>
+        </aside>
+
+        <section class="content">
+            <!-- ฟอร์มสร้างทีมฟุตบอล -->
+            <div class="team-info">
+                <h2>Create Football Team</h2>
+
+                <form action="/create" method="POST">
+                    <!-- ชื่อทีม -->
+                    <label for="team_name">Team Name:</label>
+                    <input type="text" id="team_name" name="team_name" required><br><br>
+
+                    <!-- ช่องสำหรับใส่ผู้เล่น 11 ตำแหน่ง -->
+                    <h3>Player Positions (11 players)</h3>
+
+                    <label for="player1">Player 1 (Goalkeeper):</label>
+                    <input type="text" id="player1" name="player1" value="Goalkeeper" required><br><br>
+
+                    <label for="player2">Player 2 (Right Back):</label>
+                    <input type="text" id="player2" name="player2" value="Right Back" required><br><br>
+
+                    <label for="player3">Player 3 (Center Back):</label>
+                    <input type="text" id="player3" name="player3" value="Center Back" required><br><br>
+
+                    <label for="player4">Player 4 (Center Back):</label>
+                    <input type="text" id="player4" name="player4" value="Center Back" required><br><br>
+
+                    <label for="player5">Player 5 (Left Back):</label>
+                    <input type="text" id="player5" name="player5" value="Left Back" required><br><br>
+
+                    <label for="player6">Player 6 (Defensive Midfielder):</label>
+                    <input type="text" id="player6" name="player6" value="Defensive Midfielder" required><br><br>
+
+                    <label for="player7">Player 7 (Right Midfielder):</label>
+                    <input type="text" id="player7" name="player7" value="Right Midfielder" required><br><br>
+
+                    <label for="player8">Player 8 (Central Midfielder):</label>
+                    <input type="text" id="player8" name="player8" value="Central Midfielder" required><br><br>
+
+                    <label for="player9">Player 9 (Left Midfielder):</label>
+                    <input type="text" id="player9" name="player9" value="Left Midfielder" required><br><br>
+
+                    <label for="player10">Player 10 (Attacking Midfielder):</label>
+                    <input type="text" id="player10" name="player10" value="Attacking Midfielder" required><br><br>
+
+                    <label for="player11">Player 11 (Striker):</label>
+                    <input type="text" id="player11" name="player11" value="Striker" required><br><br>
+
+                    <h3>Substitutes (5 players)</h3>
+                    <label for="sub1">Substitute 1:</label>
+                    <input type="text" id="sub1" name="sub1" value="" required><br><br>
+                    <label for="sub2">Substitute 2:</label>
+                    <input type="text" id="sub2" name="sub2" value="" required><br><br>
+                    <label for="sub3">Substitute 3:</label>
+                    <input type="text" id="sub3" name="sub3" value="" required><br><br>
+                    <label for="sub4">Substitute 4:</label>
+                    <input type="text" id="sub4" name="sub4" value="" required><br><br>
+                    <label for="sub5">Substitute 5:</label>
+                    <input type="text" id="sub5" name="sub5" value="" required><br><br>
+
+                    <h3>Description</h3>
+                    <textarea id="description" name="description" rows="4" cols="50"
+                        placeholder="Enter a description about the team"></textarea><br><br>
+
+                    <!-- ปุ่มสร้างทีม -->
+                    <button type="submit">Create Team</button>
+                </form>
+
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

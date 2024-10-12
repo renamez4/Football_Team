@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOOTBALL TEAM</title>
+    <!-- <link rel="stylesheet" href="/static/css/navbar.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navindex.css') }}">
+
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <img src="/static/image/LOGO.png" alt="Football">
+            <ul>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/sport">Sport</a></li>
+                <li><a href="/viewteam">Team</a></li>
+            </ul>
+            <a href="/account" class="account">Account</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>FOOTBALL TEAM</h1>
+        <div class="buttons">
+            <a href="/join" class="btn">Join Team</a>
+            <a href="/create" class="btn">Create Team</a>
+        </div>
+    </main>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+</body>
+
+</html>

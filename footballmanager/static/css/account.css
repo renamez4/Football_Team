@@ -1,0 +1,72 @@
+.account-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #d3d3d3;
+    padding: 30px;
+    width: 62.5%; /* Set the width to 62.5% */
+    height: 75%;
+    margin: 120px auto 0 auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.account-details {
+    flex: 1;
+    text-align: left; 
+    padding: 30px;;
+}
+
+.account-details h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.account-details label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.account-details input{
+    width: 30%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+.account-details textarea {
+    width: 30%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.account-details textarea {
+    resize: vertical;
+}
+
+.image-upload {
+    flex: 0 0 150px; /* Set fixed width for the image upload section */
+    text-align: center;
+    margin-left: 10px; 
+}
+
+.image-upload img {
+    width: 100%;
+    height: auto;
+    max-width: 150px; /* Set max-width to 150px to control the size */
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid #ccc;
+    padding: auto
+}
+
+.image-upload input[type="file"] {
+    display: none;
+}

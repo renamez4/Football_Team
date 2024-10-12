@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Team</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/join.css') }}">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <img src="/static/image/LOGO.png" alt="Football">
+            <ul>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/sport">Sport</a></li>
+                <li><a href="/join">Team</a></li>
+            </ul>
+            <a href="/account" class="account">Account</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h3>Team</h3>
+            <ul>
+                <li><a href="#">Team 1</a></li>
+                <li><a href="#">Team 2</a></li>
+                <li><a href="#">Team 3</a></li>
+            </ul>
+        </aside>
+
+        <div class="main-content">
+            <div class="team-info">
+                <h2>Name team</h2>
+                <div class="player-info">
+                    <div>Position</div>
+                    <div>Player name</div>
+                </div>
+            </div>
+
+            <div class="player-status">
+                <p>Player in team 0/11</p>
+            </div>
+
+            <div class="description">
+                <p>Description</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

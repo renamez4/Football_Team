@@ -1,0 +1,119 @@
+.container {
+    display: flex;
+    padding: 10px;
+    background-color: white;
+    width: 62.5%;
+    height: auto;
+    margin: 120px auto 0 auto;
+    justify-content: space-between;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #dedede;
+    padding: 20px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+}
+
+.sidebar ul li {
+    margin-bottom: 15px;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.sidebar ul li a:hover {
+    background-color: #ccc;
+}
+
+.content {
+    flex-grow: 1;
+    background-color: #e1e1e1;
+    padding: 30px;
+    margin-left: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+.team-info textarea {
+    resize: none; /* ป้องกันการขยายขนาดของ textarea */
+}
+.team-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: black;
+}
+
+.team-info h2 {
+    font-size: 24px;
+    text-align: center;
+}
+
+.team-logo {
+    width: 120px;
+    height: auto;
+    position: absolute;
+    top: 20px; /* ระยะห่างจากด้านบนของกรอบ content */
+    right: 20px; /* ระยะห่างจากด้านขวาของกรอบ content */
+    margin-bottom: 20px;
+}
+
+.team-info button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute; /* ใช้ absolute เพื่อจัดวางปุ่ม */
+    bottom: 20px; /* ระยะห่างจากขอบล่าง */
+    right: 20px; /* ระยะห่างจากขอบขวา */
+}
+
+.team-info input[type="text"], .team-info textarea {
+    width: 30%; 
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+.team-info button:hover {
+    background-color: #45a049;
+}
+/* Adding some responsive design for better handling on smaller screens */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .content {
+        margin-left: 0;
+    }
+}

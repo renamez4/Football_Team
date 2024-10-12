@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sport</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sport.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <img src="/static/image/LOGO.png" alt="Football">
+            <ul>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/sport">Sport</a></li>
+                <li><a href="/join">Team</a></li>
+            </ul>
+            <a href="/account" class="account">Account</a>
+        </nav>
+    </header>
+
+    <div class="card">
+        <h2>Sport</h2>
+        <div class="image-container">
+            <img src="/static/image/football.png" alt="Football">
+        </div>
+        <div class="text-box">
+            <p>FOOTBALL</p>
+            <p>Gameplay</p>
+            <p>Rules</p>
+        </div>
+    </div>

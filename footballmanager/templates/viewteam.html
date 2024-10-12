@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Team</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/create.css') }}">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <img src="{{ url_for('static', filename='image/LOGO.png') }}" alt="Football">
+            <ul>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/sport">Sport</a></li>
+                <li><a href="/join">Team</a></li>
+            </ul>
+            <a href="/account" class="account">Account</a>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <section class="content">
+            <!-- ฟอร์มสร้างทีมฟุตบอล -->
+            <div class="team-info">
+                <h2>Team Overview</h2>
+
+                <!-- เปลี่ยน action ของฟอร์มให้ตรงกับ route ของ Flask -->
+                <form action="/viewteam" method="POST">
+                    {% for team in teams %}
+                    <label for="team_name_{{ team['team_id'] }}">Team Name {{ team['team_id'] }}:</label>
+                    <input type="text" id="team_name_{{ team['team_id'] }}" name="team_name_{{ team['team_id'] }}"
+                        value="{{ team['team_name'] }}"><br><br>
+                    {% endfor %}
+
+
+                    <!-- ช่องสำหรับใส่ผู้เล่น 11 ตำแหน่ง -->
+                    <h3>Player Positions (11 players)</h3>
+
+                    {% for player in players %}
+                    <label for="{{ player['player_name'] }}">{{ player['player_name'] }} ({{ player['player_position']
+                        }}):</label>
+                    <input type="text" id="{{ player['player_name'] }}" name="{{ player['player_name'] }}"
+                        value="{{ player['player_position'] }}" required><br><br>
+                    {% endfor %}
+
+                    <!-- <label for="player2">Player 2 (Right Back):</label>
+                    <input type="text" id="player2" name="player2" value="Right Back" required><br><br>
+
+                    <label for="player3">Player 3 (Center Back):</label>
+                    <input type="text" id="player3" name="player3" value="Center Back" required><br><br>
+
+                    <label for="player4">Player 4 (Center Back):</label>
+                    <input type="text" id="player4" name="player4" value="Center Back" required><br><br>
+
+                    <label for="player5">Player 5 (Left Back):</label>
+                    <input type="text" id="player5" name="player5" value="Left Back" required><br><br>
+
+                    <label for="player6">Player 6 (Defensive Midfielder):</label>
+                    <input type="text" id="player6" name="player6" value="Defensive Midfielder" required><br><br>
+
+                    <label for="player7">Player 7 (Right Midfielder):</label>
+                    <input type="text" id="player7" name="player7" value="Right Midfielder" required><br><br>
+
+                    <label for="player8">Player 8 (Central Midfielder):</label>
+                    <input type="text" id="player8" name="player8" value="Central Midfielder" required><br><br>
+
+                    <label for="player9">Player 9 (Left Midfielder):</label>
+                    <input type="text" id="player9" name="player9" value="Left Midfielder" required><br><br>
+
+                    <label for="player10">Player 10 (Attacking Midfielder):</label>
+                    <input type="text" id="player10" name="player10" value="Attacking Midfielder" required><br><br>
+
+                    <label for="player11">Player 11 (Striker):</label>
+                    <input type="text" id="player11" name="player11" value="Striker" required><br><br>
+
+                    <h3>Substitutes (5 players)</h3>
+                    <label for="sub1">Substitute 1:</label>
+                    <input type="text" id="sub1" name="sub1" value="Enter position" required><br><br>
+                    <label for="sub2">Substitute 2:</label>
+                    <input type="text" id="sub2" name="sub2" value="Enter position" required><br><br>
+                    <label for="sub3">Substitute 3:</label>
+                    <input type="text" id="sub3" name="sub3" value="Enter position" required><br><br>
+                    <label for="sub4">Substitute 4:</label>
+                    <input type="text" id="sub4" name="sub4" value="Enter position" required><br><br>
+                    <label for="sub5">Substitute 5:</label>
+                    <input type="text" id="sub5" name="sub5" value="Enter position" required><br><br>
+
+                    <h3>Description</h3>
+                    <textarea id="description" name="description" rows="4" cols="50"
+                        placeholder="Enter a description about the team"></textarea><br><br> -->
+                    <button type="submit">Save Changes</button>
+                    </form>
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                        <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    {% endwith %}
+
+
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
+
+<!-- 
+<table border="1">
+    <thead>
+        <tr>
+            <th>team_id</th>
+            <th>player_name</th>
+            <th>player_position</th>
+            <th>name_team</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in rows %}
+        <tr>
+            <td>{{ row['team_id'] }}</td>
+            <td>{{ row['player_name'] }}</td>
+            <td>{{ row['player_position'] }}</td>
+            <td>{{ row['name_team'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table> -->

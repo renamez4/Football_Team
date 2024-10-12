@@ -1,0 +1,85 @@
+.container {
+    display: flex;
+    padding: 20px;
+    background-color: white;
+    width: 62.5%;
+    margin: 120px auto 0 auto;
+    height: 75%;
+    justify-content: space-between;
+    border-radius: 20px;
+    /* เพิ่มการโค้งมนที่กรอบ */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* เพิ่มเงา */
+    padding: 30px;
+    /* เพิ่ม Padding เพื่อสร้างระยะห่างในกรอบ */
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #dedede;
+    padding: 20px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.sidebar ul li a:hover {
+    background-color: #ccc;
+}
+
+.main-content {
+    flex-grow: 1;
+    background-color: #e1e1e1;
+    padding: 30px;
+    margin-left: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.team-info h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.player-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.player-info div {
+    width: 45%;
+    text-align: center;
+    color: #666;
+}
+
+.player-status {
+    font-style: italic;
+    color: gray;
+    margin-bottom: 20px;
+}
+
+.description {
+    color: #666;
+}

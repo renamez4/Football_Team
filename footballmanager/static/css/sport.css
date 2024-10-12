@@ -1,0 +1,79 @@
+.card {
+    background-color: #e6f1fb;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 30px;
+    width:62.5%;
+    height: 75%;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 120px auto 0 auto;
+}
+
+h2 {
+    text-align: left;
+    margin: 0 0 15px 0;
+    font-size: 24px; /* เพิ่มขนาดตัวอักษรสำหรับหัวข้อ */
+    color: #333;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.text-box {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px; /* เพิ่ม padding เพื่อความชัดเจน */
+    background-color: #ffffff;
+    text-align: left; /* จัดให้ข้อความทั้งหมดชิดซ้าย */
+}
+
+.text-box p {
+    margin: 10px 0;
+    font-size: 18px; /* ขนาดตัวอักษรสำหรับข้อมูลภายในกรอบ */
+    color: #333;
+    text-align: left; /* จัดให้ข้อความแต่ละบรรทัดชิดซ้าย */
+}
+
+
+/* Media query สำหรับหน้าจอขนาดเล็กกว่า 768px */
+@media (max-width: 768px) {
+    .card {
+        width: 90%;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .text-box p {
+        font-size: 16px;
+    }
+}
+
+/* Media query สำหรับหน้าจอขนาดเล็กกว่า 480px */
+@media (max-width: 480px) {
+    .card {
+        width: 100%;
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .text-box p {
+        font-size: 14px;
+    }
+}
