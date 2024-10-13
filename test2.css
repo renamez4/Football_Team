@@ -1,3 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
 .container {
     display: flex;
     padding: 20px;
@@ -50,26 +60,37 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    text-align: center
+    ;
 }
 
-.team-info textarea {
-    resize: none; /* ป้องกันการขยายขนาดของ textarea */
+.main-content h2 {
+    margin-bottom: 20px;
 }
-.team-info {
-    width: 100%;
+
+.form-box {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.field {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    color: black;
+    align-items: center;
+    width: 45%;
 }
 
 input[type="text"] {
     display: flex;
-    width: 25%;
+    width: 40%;
     padding: 10px;
-    margin-top: 2px;
+    margin-top: 20px;
     margin-bottom: 2px;
-    margin-left: 90px;
+    margin-left: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
@@ -77,52 +98,4 @@ input[type="text"] {
     text-align: center;
     flex-direction: column;
     align-items: center;
-}
-.player-name{
-    
-}
-.Substitute h3{
-    color: black;
-}
-.Substitute input[type="text"]{display: flex;
-    width: 25%;
-    padding: 10px;
-    margin-top: 2px;
-    margin-bottom: 2px;
-    margin-left: 90px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-size: 16px;
-    text-align: center;
-    flex-direction: column;
-    align-items: center;}
-
-
-.team-info h2 {
-    font-size: 24px;
-    text-align: center;
-}
-
-.player-info {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    width: 100%;
-}
-
-.player-info div {
-    width: 45%;
-    text-align: center;
-    color: black;
-}
-
-.player-status {
-    font-style: italic;
-    color: black;
-    margin-bottom: 20px;
-}
-
-.description {
-    color: black;
 }
