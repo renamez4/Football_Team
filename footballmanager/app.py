@@ -15,12 +15,12 @@ db_config = {
     'host': 'localhost',
     'database': 'project2'
 }
-
+print('This is User : ' + os.getenv('DB_USER'))
+print('This is Pass : '+ os.getenv('DB_PASS'))
 
 def get_db_connection():
     connection = mysql.connector.connect(**db_config)
     return connection
-
 
 @app.route('/')
 def login():
