@@ -15,6 +15,15 @@
     transition: transform 0.5sb ease, height 0.2s ease;
 }
 
+.heart {
+    position: absolute;
+    color: indianred;
+}
+
+.heart-h1 h1 {
+    color: aqua;
+}
+
 .wrapper.active {
     height: 520px;
 }

@@ -11,9 +11,9 @@ registerLink.addEventListener('click', ()=> {
 loginLink.addEventListener('click', ()=> {
     wrapper.classList.remove('active');
 });
-
+wrapper.classList.add('active-popup');
 btnPopup.addEventListener('click', ()=> {
-    wrapper.classList.add('active-popup');
+    wrapper.classList.toggle('active-popup');
 });
 
 iconClose.addEventListener('click', ()=> {
