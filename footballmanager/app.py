@@ -15,8 +15,8 @@ db_config = {
     'host': '127.0.0.1',
     'database': 'project2'
 }
-print(f"DB_USER: {os.getenv('DB_USER')}")
-print(f"DB_PASS: {os.getenv('DB_PASS')}")
+print('This is User : ' + os.getenv('DB_USER'))
+print('This is Pass : '+ os.getenv('DB_PASS'))
 
 def get_db_connection():
     connection = mysql.connector.connect(**db_config)
