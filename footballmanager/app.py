@@ -16,11 +16,9 @@ db_config = {
     'database': 'project2'
 }
 
-
 def get_db_connection():
     connection = mysql.connector.connect(**db_config)
     return connection
-
 
 @app.route('/')
 def login():
