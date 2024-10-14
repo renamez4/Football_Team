@@ -12,7 +12,7 @@ app.secret_key = 'your_secret_key'
 db_config = {
     'user': os.getenv('DB_USER'),
     'password': os.getenv('DB_PASS'),
-    'host': '127.0.0.1',
+    'host': 'localhost',
     'database': 'project2'
 }
 
