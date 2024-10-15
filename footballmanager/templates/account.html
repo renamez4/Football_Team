@@ -27,7 +27,7 @@
     <div class="account-container">
         <div class="account-details">
             <h2>Account</h2>
-
+            <form action="/accountmodify" method="POST"></form>
             <label for="username">Username</label>
             <input type="text" id="username" name="username">
 
@@ -43,8 +43,14 @@
             <label for="bio">Bio</label>
             <textarea id="bio" name="bio" rows="4"></textarea>
 
+            
             <label for="ability">Ability</label>
-            <textarea id="ability" name="ability" rows="4"></textarea>
+            <select id="ability" name="ability">
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+            </select>
+
             
         </div>
         <div class="image-upload">

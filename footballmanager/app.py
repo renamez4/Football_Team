@@ -82,6 +82,8 @@ def login_register():
         connection.close()
         return redirect(url_for('login'))
 
+# @app.route('/accountmodify', methods=['POST'])
+# def accountmodify():
 
 @app.route('/index')
 def index():
