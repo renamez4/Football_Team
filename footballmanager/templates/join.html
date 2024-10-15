@@ -18,6 +18,7 @@
                 <li><a href="/sport">Sport</a></li>
                 <li><a href="/join">Team</a></li>
             </ul>
+            <li><a href="/logout">Logout</a></li>
             <a href="/account" class="account">Account</a>
         </nav>
     </header>
@@ -31,106 +32,81 @@
                 <li><a href="#">Team 3</a></li>
             </ul>
         </aside>
-
         <div class="main-content">
-            <div class="team-info">
-                <h2>Team Name</h2>
-                <div class="player-info">
-                    <div>Position</div>
-                    <div>Player name</div>
+            <h2>Team Name</h2>
+            <h3>ตัวจริง</h3>
+            <div class="form-box">
+                <div class="field">
+                    <label for="position">Position</label>
+                    <input type="text" id="player1" name="player1" value="Goalkeeper" required><br><br>
+                    <input type="text" id="player2" name="player2" value="Right Back" required><br><br>
+                    <input type="text" id="player3" name="player3" value="Center Back" required><br><br>
+                    <input type="text" id="player4" name="player4" value="Center Back" required><br><br>
+                    <input type="text" id="player5" name="player5" value="Left Back" required><br><br>
+                    <input type="text" id="player6" name="player6" value="Defensive Midfielder" required><br><br>
+                    <input type="text" id="player7" name="player7" value="Right Midfielder" required><br><br>
+                    <input type="text" id="player8" name="player8" value="Central Midfielder" required><br><br>
+                    <input type="text" id="player9" name="player9" value="Left Midfielder" required><br><br>
+                    <input type="text" id="player10" name="player10" value="Attacking Midfielder" required><br><br>
+                    <input type="text" id="player11" name="player11" value="Striker" required><br><br>
+                </div>
+                <div class="field">
+                    <label for="player-name">Player Name</label>
+                    <input type="text" id="name1" name="name1" value="John Doe" required><br><br>
+                    <input type="text" id="name2" name="name2" value="Michael Smith" required><br><br>
+                    <input type="text" id="name3" name="name3" value="David Johnson" required><br><br>
+                    <input type="text" id="name4" name="name4" value="Chris Brown" required><br><br>
+                    <input type="text" id="name5" name="name5" value="James Williams" required><br><br>
+                    <input type="text" id="name6" name="name6" value="Robert Miller" required><br><br>
+                    <input type="text" id="name7" name="name7" value="Mark Wilson" required><br><br>
+                    <input type="text" id="name8" name="name8" value="Daniel Moore" required><br><br>
+                    <input type="text" id="name9" name="name9" value="Paul Taylor" required><br><br>
+                    <input type="text" id="name10" name="name10" value="Andrew Anderson" required><br><br>
+                    <input type="text" id="name11" name="name11" value="Kevin Thomas" required><br><br>
+                </div>
+                <div class="field">
+                    <label for="phone">Phone</label>
+                    <input type="text" id="phone1" name="phone1" value="123-456-7890" required><br><br>
+                    <input type="text" id="phone2" name="phone2" value="987-654-3210" required><br><br>
+                    <input type="text" id="phone3" name="phone3" value="111-222-3333" required><br><br>
+                    <input type="text" id="phone4" name="phone4" value="444-555-6666" required><br><br>
+                    <input type="text" id="phone5" name="phone5" value="777-888-9999" required><br><br>
+                    <input type="text" id="phone6" name="phone6" value="555-444-3333" required><br><br>
+                    <input type="text" id="phone7" name="phone7" value="222-111-0000" required><br><br>
+                    <input type="text" id="phone8" name="phone8" value="999-888-7777" required><br><br>
+                    <input type="text" id="phone9" name="phone9" value="666-555-4444" required><br><br>
+                    <input type="text" id="phone10" name="phone10" value="333-222-1111" required><br><br>
+                    <input type="text" id="phone11" name="phone11" value="000-111-2222" required><br><br>
                 </div>
             </div>
-            <div class ="player-position">
-                <label for="player1"></label>
-                <input type="text" id="player1" name="player1" value="Goalkeeper" required><br><br>
-    
-                <label for="player2"></label>
-                <input type="text" id="player2" name="player2" value="Right Back" required><br><br>
-    
-                <label for="player3"></label>
-                <input type="text" id="player3" name="player3" value="Center Back" required><br><br>
-    
-                <label for="player4"></label>
-                <input type="text" id="player4" name="player4" value="Center Back" required><br><br>
-    
-                <label for="player5"></label>
-                <input type="text" id="player5" name="player5" value="Left Back" required><br><br>
-    
-                <label for="player6"></label>
-                <input type="text" id="player6" name="player6" value="Defensive Midfielder" required><br><br>
-    
-                <label for="player7"></label>
-                <input type="text" id="player7" name="player7" value="Right Midfielder" required><br><br>
-    
-                <label for="player8"></label>
-                <input type="text" id="player8" name="player8" value="Central Midfielder" required><br><br>
-    
-                <label for="player9"></label>
-                <input type="text" id="player9" name="player9" value="Left Midfielder" required><br><br>
-    
-                <label for="player10"></label>
-                <input type="text" id="player10" name="player10" value="Attacking Midfielder" required><br><br>
-    
-                <label for="player11"></label>
-                <input type="text" id="player11" name="player11" value="Striker" required><br><br>
-            </div>
-            
-            <!-- <div class="player-name">
-                <label for="player1"></label>
-                <input type="text" id="player1" name="player1" value="Goalkeeper" required><br><br>
-
-                <label for="player2"></label>
-                <input type="text" id="player2" name="player2" value="Right Back" required><br><br>
-
-                <label for="player3"></label>
-                <input type="text" id="player3" name="player3" value="Center Back" required><br><br>
-
-                <label for="player4"></label>
-                <input type="text" id="player4" name="player4" value="Center Back" required><br><br>
-
-                <label for="player5"></label>
-                <input type="text" id="player5" name="player5" value="Left Back" required><br><br>
-
-                <label for="player6"></label>
-                <input type="text" id="player6" name="player6" value="Defensive Midfielder" required><br><br>
-
-                <label for="player7"></label>
-                <input type="text" id="player7" name="player7" value="Right Midfielder" required><br><br>
-
-                <label for="player8"></label>
-                <input type="text" id="player8" name="player8" value="Central Midfielder" required><br><br>
-
-                <label for="player9"></label>
-                <input type="text" id="player9" name="player9" value="Left Midfielder" required><br><br>
-
-                <label for="player10"></label>
-                <input type="text" id="player10" name="player10" value="Attacking Midfielder" required><br><br>
-
-                <label for="player11"></label>
-                <input type="text" id="player11" name="player11" value="Striker" required><br><br>
-            </div> -->
-
-            <div class="Substitute">
-                <h3>Substitutes</h3>
-                <label for="sub1"></label>
-                <input type="text" id="sub1" name="sub1" value="" required><br><br>
-                <label for="sub2"></label>
-                <input type="text" id="sub2" name="sub2" value="" required><br><br>
-                <label for="sub3"></label>
-                <input type="text" id="sub3" name="sub3" value="" required><br><br>
-                <label for="sub4"></label>
-                <input type="text" id="sub4" name="sub4" value="" required><br><br>
-                <label for="sub5"></label>
-                <input type="text" id="sub5" name="sub5" value="" required><br><br>
-            </div>
-            <div class="player-status">
-                <p>Player in team 0/11</p>
-            </div>
-            <div class="description">
-                <p>Description</p>
+            <h3>ตัวสำรอง</h3>
+            <div class="form-box">
+                <div class="field">
+                    <label for="position">Position</label>
+                    <input type="text" id="sub1" name="sub1" value="Substitute 1" required><br><br>
+                    <input type="text" id="sub2" name="sub2" value="Substitute 2" required><br><br>
+                    <input type="text" id="sub3" name="sub3" value="Substitute 3" required><br><br>
+                    <input type="text" id="sub4" name="sub4" value="Substitute 4" required><br><br>
+                    <input type="text" id="sub5" name="sub5" value="Substitute 5" required><br><br>
+                </div>
+                <div class="field">
+                    <label for="player-name">Player Name</label>
+                    <input type="text" id="nameSub1" name="nameSub1" value="William Carter" required><br><br>
+                    <input type="text" id="nameSub2" name="nameSub2" value="Steven Clark" required><br><br>
+                    <input type="text" id="nameSub3" name="nameSub3" value="George Lewis" required><br><br>
+                    <input type="text" id="nameSub4" name="nameSub4" value="Brian Walker" required><br><br>
+                    <input type="text" id="nameSub5" name="nameSub5" value="Matthew Hall" required><br><br>
+                </div>
+                <div class="field">
+                    <label for="phone">Phone</label>
+                    <input type="text" id="phoneSub1" name="phoneSub1" value="123-123-1234" required><br><br>
+                    <input type="text" id="phoneSub2" name="phoneSub2" value="987-987-9876" required><br><br>
+                    <input type="text" id="phoneSub3" name="phoneSub3" value="555-555-5555" required><br><br>
+                    <input type="text" id="phoneSub4" name="phoneSub4" value="444-444-4444" required><br><br>
+                    <input type="text" id="phoneSub5" name="phoneSub5" value="333-333-3333" required><br><br>
+                </div>
             </div>
         </div>
-
     </div>
 </body>
 

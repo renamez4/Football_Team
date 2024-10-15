@@ -19,6 +19,7 @@
                 <li><a href="/sport">Sport</a></li>
                 <li><a href="/join">Team</a></li>
             </ul>
+            <li><a href="/logout">Logout</a></li>
             <a href="/account" class="account">Account</a>
         </nav>
     </header>
@@ -41,6 +42,10 @@
 
             <label for="bio">Bio</label>
             <textarea id="bio" name="bio" rows="4"></textarea>
+
+            <label for="ability">Ability</label>
+            <textarea id="ability" name="ability" rows="4"></textarea>
+            
         </div>
         <div class="image-upload">
             <label for="file-input">
@@ -49,6 +54,7 @@
             <input id="file-input" type="file" accept="image/*" onchange="previewImage(event)">
         </div>
     </div>
+    <button type="submit">Submit</button>
 
     <script>
         function previewImage(event) {

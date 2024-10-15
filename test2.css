@@ -68,6 +68,13 @@ body {
     margin-bottom: 20px;
 }
 
+.main-content h3{
+    text-align: left;
+    font-size: 24px;
+    
+    color: #000;
+    
+}
 .form-box {
     background-color: #fff;
     padding: 20px;

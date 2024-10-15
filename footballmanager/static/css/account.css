@@ -4,7 +4,8 @@
     align-items: flex-start;
     background-color: #d3d3d3;
     padding: 30px;
-    width: 62.5%; /* Set the width to 62.5% */
+    width: 62.5%;
+    /* Set the width to 62.5% */
     height: 75%;
     margin: 120px auto 0 auto;
     border-radius: 15px;
@@ -13,8 +14,9 @@
 
 .account-details {
     flex: 1;
-    text-align: left; 
-    padding: 30px;;
+    text-align: left;
+    padding: 30px;
+    ;
 }
 
 .account-details h2 {
@@ -28,7 +30,7 @@
     font-size: 18px;
 }
 
-.account-details input{
+.account-details input {
     width: 30%;
     padding: 10px;
     margin-bottom: 10px;
@@ -50,15 +52,16 @@
 }
 
 .image-upload {
-    flex: 0 0 150px; /* Set fixed width for the image upload section */
+    flex: 0 0 150px;
     text-align: center;
-    margin-left: 10px; 
+    margin-left: 10px;
 }
 
 .image-upload img {
     width: 100%;
     height: auto;
-    max-width: 150px; /* Set max-width to 150px to control the size */
+    max-width: 150px;
+    /* Set max-width to 150px to control the size */
     max-height: 150px;
     object-fit: cover;
     border-radius: 10px;
@@ -69,4 +72,34 @@
 
 .image-upload input[type="file"] {
     display: none;
+}
+
+button {
+    background-color: #4CAF50;
+    /* สีพื้นหลังเริ่มต้น */
+    color: white;
+    /* สีตัวอักษร */
+    padding: 15px 32px;
+    /* ระยะขอบภายใน */
+    text-align: center;
+    /* จัดตัวอักษรกลาง */
+    text-decoration: none;
+    /* ไม่มีขีดเส้นใต้ */
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border: none;
+    /* ไม่มีขอบ */
+    border-radius: 12px;
+    /* ขอบมน */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    /* เอฟเฟกต์ทรานสิชัน */
+}
+
+button:hover {
+    background-color: #45a049;
+    /* สีเมื่อ hover */
+    transform: scale(1.05);
+    /* ขยายปุ่มเล็กน้อย */
 }
