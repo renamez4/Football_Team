@@ -122,7 +122,7 @@ def accountmodify():
                 connection.commit()
 
                 flash('Account updated successfully!', 'success')
-                return redirect(url_for('account'))
+                return redirect(url_for('index'))
             except Exception as e:
                 connection.rollback()
                 flash(f'Error updating account: {str(e)}', 'danger')
