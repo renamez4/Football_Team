@@ -103,3 +103,9 @@ button:hover {
     transform: scale(1.05);
     /* ขยายปุ่มเล็กน้อย */
 }
+
+.ability-container {
+    display: flex;
+    gap: 10px; /* Adds some space between the items */
+    align-items: center; /* Aligns the labels and selects vertically */
+}
