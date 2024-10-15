@@ -117,3 +117,25 @@
         margin-left: 0;
     }
 }
+
+.image-upload {
+    /* flex: 0 0 150px;  */
+    text-align: right;
+    margin-left: 10px; 
+}
+
+.image-upload img {
+    width: 100%;
+    height: auto;
+    max-width: 150px; 
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid #ccc;
+    padding: auto
+}
+
+.image-upload input[type="file"] {
+    display: none;
+}

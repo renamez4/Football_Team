@@ -19,6 +19,7 @@
                 <li><a href="/sport">Sport</a></li>
                 <li><a href="/join">Team</a></li>
             </ul>
+            <li><a href="/logout">Logout</a></li>
             <a href="/account" class="account">Account</a>
         </nav>
     </header>
@@ -36,6 +37,12 @@
             <!-- ฟอร์มสร้างทีมฟุตบอล -->
             <div class="team-info">
                 <h2>Create Football Team</h2>
+                <div class="image-upload">
+                    <label for="file-input">
+                        <img src="/mnt/data/image.png" alt="Upload Image" id="profile-picture">
+                    </label>
+                    <input id="file-input" type="file" accept="image/*" onchange="previewImage(event)">
+                </div>
 
                 <form action="/create" method="POST">
                     <!-- ชื่อทีม -->
@@ -101,6 +108,16 @@
             </div>
         </section>
     </div>
+    <script>
+        function previewImage(event) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                var output = document.getElementById('profile-picture');
+                output.src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
 </body>
 
 </html>
