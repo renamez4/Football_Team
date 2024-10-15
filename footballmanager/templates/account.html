@@ -17,7 +17,7 @@
             <ul>
                 <li><a href="/index">Home</a></li>
                 <li><a href="/sport">Sport</a></li>
-                <li><a href="/viewteam">Team</a></li>
+                <li><a href="/">Team</a></li>
             </ul>
             <a href="/logout" class="logout-btn">Logout</a>
             <a href="/account" class="account">{{ username }}</a>
@@ -27,89 +27,93 @@
     <div class="account-container">
         <div class="account-details">
             <h2>Account</h2>
-            <form action="/accountmodify" method="POST">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" value="{{ user[0] }}" required>
-    
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" value="{{ user[1] }}" required>
-    
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" value="{{ user[2] if user[2] is not none else '' }}">
-    
-                <label for="bio">Bio</label>
-                <textarea id="bio" name="bio" rows="4">{{ user[3] if user[3] is not none else '' }}</textarea>
-    
-                <div class="ability-container">
-                    <label for="ability1">Ability1</label>
-                    <select id="ability1" name="ability1">
-                        <option value="GK" {% if user[4] == 'GK' %}selected{% endif %}>GK</option>
-                        <option value="RB" {% if user[4] == 'RB' %}selected{% endif %}>RB</option>
-                        <option value="LB" {% if user[4] == 'LB' %}selected{% endif %}>LB</option>
-                        <option value="CB" {% if user[4] == 'CB' %}selected{% endif %}>CB</option>
-                        <option value="RWB" {% if user[4] == 'RWB' %}selected{% endif %}>RWB</option>
-                        <option value="LWB" {% if user[4] == 'LWB' %}selected{% endif %}>LWB</option>
-                        <option value="CDM" {% if user[4] == 'CDM' %}selected{% endif %}>CDM</option>
-                        <option value="CM" {% if user[4] == 'CM' %}selected{% endif %}>CM</option>
-                        <option value="CAM" {% if user[4] == 'CAM' %}selected{% endif %}>CAM</option>
-                        <option value="RM" {% if user[4] == 'RM' %}selected{% endif %}>RM</option>
-                        <option value="LM" {% if user[4] == 'LM' %}selected{% endif %}>LM</option>
-                        <option value="RW" {% if user[4] == 'RW' %}selected{% endif %}>RW</option>
-                        <option value="LW" {% if user[4] == 'LW' %}selected{% endif %}>LW</option>
-                        <option value="ST" {% if user[4] == 'ST' %}selected{% endif %}>ST</option>
-                        <option value="CF" {% if user[4] == 'CF' %}selected{% endif %}>CF</option>
-                    </select>
-    
-                    <label for="ability2">Ability2</label>
-                    <select id="ability2" name="ability2">
-                        <option value="GK" {% if user[5] == 'GK' %}selected{% endif %}>GK</option>
-                        <option value="RB" {% if user[5] == 'RB' %}selected{% endif %}>RB</option>
-                        <option value="LB" {% if user[5] == 'LB' %}selected{% endif %}>LB</option>
-                        <option value="CB" {% if user[5] == 'CB' %}selected{% endif %}>CB</option>
-                        <option value="RWB" {% if user[5] == 'RWB' %}selected{% endif %}>RWB</option>
-                        <option value="LWB" {% if user[5] == 'LWB' %}selected{% endif %}>LWB</option>
-                        <option value="CDM" {% if user[5] == 'CDM' %}selected{% endif %}>CDM</option>
-                        <option value="CM" {% if user[5] == 'CM' %}selected{% endif %}>CM</option>
-                        <option value="CAM" {% if user[5] == 'CAM' %}selected{% endif %}>CAM</option>
-                        <option value="RM" {% if user[5] == 'RM' %}selected{% endif %}>RM</option>
-                        <option value="LM" {% if user[5] == 'LM' %}selected{% endif %}>LM</option>
-                        <option value="RW" {% if user[5] == 'RW' %}selected{% endif %}>RW</option>
-                        <option value="LW" {% if user[5] == 'LW' %}selected{% endif %}>LW</option>
-                        <option value="ST" {% if user[5] == 'ST' %}selected{% endif %}>ST</option>
-                        <option value="CF" {% if user[5] == 'CF' %}selected{% endif %}>CF</option>
-                    </select>
-    
-                    <label for="ability3">Ability3</label>
-                    <select id="ability3" name="ability3">
-                        <option value="GK" {% if user[6] == 'GK' %}selected{% endif %}>GK</option>
-                        <option value="RB" {% if user[6] == 'RB' %}selected{% endif %}>RB</option>
-                        <option value="LB" {% if user[6] == 'LB' %}selected{% endif %}>LB</option>
-                        <option value="CB" {% if user[6] == 'CB' %}selected{% endif %}>CB</option>
-                        <option value="RWB" {% if user[6] == 'RWB' %}selected{% endif %}>RWB</option>
-                        <option value="LWB" {% if user[6] == 'LWB' %}selected{% endif %}>LWB</option>
-                        <option value="CDM" {% if user[6] == 'CDM' %}selected{% endif %}>CDM</option>
-                        <option value="CM" {% if user[6] == 'CM' %}selected{% endif %}>CM</option>
-                        <option value="CAM" {% if user[6] == 'CAM' %}selected{% endif %}>CAM</option>
-                        <option value="RM" {% if user[6] == 'RM' %}selected{% endif %}>RM</option>
-                        <option value="LM" {% if user[6] == 'LM' %}selected{% endif %}>LM</option>
-                        <option value="RW" {% if user[6] == 'RW' %}selected{% endif %}>RW</option>
-                        <option value="LW" {% if user[6] == 'LW' %}selected{% endif %}>LW</option>
-                        <option value="ST" {% if user[6] == 'ST' %}selected{% endif %}>ST</option>
-                        <option value="CF" {% if user[6] == 'CF' %}selected{% endif %}>CF</option>
-                    </select>
-                </div>
-    
-                <div class="image-upload" id="image-upload">
-                    <label for="file-input">
-                        <span class="add-icon">+</span> <!-- ไอคอน + -->
-                        <img src="" alt="Upload Image" id="profile-picture"> <!-- ภาพที่แสดง -->
-                    </label>
-                    <input id="file-input" type="file" accept="image/*" onchange="previewImage(event)">
-                </div>
+            <form action="/accountmodify" method="POST"></form>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username">
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone">
+
+            <label for="bio">Bio</label>
+            <textarea id="bio" name="bio" rows="4"></textarea>
+
+            <div class="ability-container">
+                <label for="ability1">Ability1</label>
+                <select id="ability1" name="ability1">
+                    <option value="GK">GK</option>
+                    <option value="RB">RB</option>
+                    <option value="LB">LB</option>
+                    <option value="CB">CB</option>
+                    <option value="RWB">RWB</option>
+                    <option value="LWB">LWB</option>
+                    <option value="CDM">CDM</option>
+                    <option value="CM">CM</option>
+                    <option value="CAM">CAM</option>
+                    <option value="RM">RM</option>
+                    <option value="LM">LM</option>
+                    <option value="RW">RW</option>
+                    <option value="LW">LW</option>
+                    <option value="ST">ST</option>
+                    <option value="CF">CF</option>
+                </select>
+
+                <label for="ability2">Ability2</label>
+                <select id="ability2" name="ability2">
+                    <option value="GK">GK</option>
+                    <option value="RB">RB</option>
+                    <option value="LB">LB</option>
+                    <option value="CB">CB</option>
+                    <option value="RWB">RWB</option>
+                    <option value="LWB">LWB</option>
+                    <option value="CDM">CDM</option>
+                    <option value="CM">CM</option>
+                    <option value="CAM">CAM</option>
+                    <option value="RM">RM</option>
+                    <option value="LM">LM</option>
+                    <option value="RW">RW</option>
+                    <option value="LW">LW</option>
+                    <option value="ST">ST</option>
+                    <option value="CF">CF</option>
+                </select>
+
+                <label for="ability3">Ability3</label>
+                <select id="ability3" name="ability3">
+                    <option value="GK">GK</option>
+                    <option value="RB">RB</option>
+                    <option value="LB">LB</option>
+                    <option value="CB">CB</option>
+                    <option value="RWB">RWB</option>
+                    <option value="LWB">LWB</option>
+                    <option value="CDM">CDM</option>
+                    <option value="CM">CM</option>
+                    <option value="CAM">CAM</option>
+                    <option value="RM">RM</option>
+                    <option value="LM">LM</option>
+                    <option value="RW">RW</option>
+                    <option value="LW">LW</option>
+                    <option value="ST">ST</option>
+                    <option value="CF">CF</option>
+                </select>
             </div>
-            <button type="submit" name="action_type" value="modify">Submit</button>
-            </form>
-        </div>         
+
+        </div>
+        <div class="image-upload" id="image-upload">
+            <label for="file-input">
+                <span class="add-icon">+</span> <!-- ไอคอน + -->
+                <img src="" alt="Upload Image" id="profile-picture"> <!-- ภาพที่แสดง -->
+            </label>
+            <input id="file-input" type="file" accept="image/*" onchange="previewImage(event)">
+        </div>
+        
+    </div>
+    <button type="submit">Submit</button>
+
     <script>
         function previewImage(event) {
             var reader = new FileReader();
