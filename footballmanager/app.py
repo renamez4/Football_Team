@@ -46,7 +46,7 @@ def login_register():
         if user and bcrypt.checkpw(password, user['password'].encode('utf-8')): 
             # Set session data
             session['loggedin'] = True
-            session['user_id'] = user['user_id']
+            session['user_id'] = str(user['user_id'])
             session['username'] = user['username']
             flash('Success to login')
             return redirect(url_for('index'))
@@ -113,14 +113,15 @@ def accountmodify():
 
                 # Update user details if email is unique
                 cursor.execute("""
-                    UPDATE users SET username = ?, email = ?, phone = ?, bio = ?, 
-                                    ability1 = ?, ability2 = ?, ability3 = ?
-                    WHERE user_id = ?
+                    UPDATE users SET username = %s, email = %s, phone = %s, bio = %s, 
+                                    ability1 = %s, ability2 = %s, ability3 = %s
+                    WHERE user_id = %s
                 """, (username, email, phone, bio, ability1, ability2, ability3, user_id))
 
                 connection.commit()
 
                 flash('Account updated successfully!', 'success')
+                return redirect(url_for('account'))
             except Exception as e:
                 connection.rollback()
                 flash(f'Error updating account: {str(e)}', 'danger')
@@ -186,7 +187,7 @@ def create():
 
             return redirect(url_for('viewteam'))
 
-        return render_template('create.html')
+        return render_template('create.html', username=session['username'])
     else:
         return redirect(url_for('login'))
 
@@ -225,7 +226,7 @@ def viewteam():
         cursor.close()
         connection.close()
 
-        return render_template('viewteam.html', teams=teams)
+        return render_template('viewteam.html', teams=teams, username=session['username'])
     
     else:
         return redirect(url_for('login'))
@@ -234,25 +235,44 @@ def viewteam():
 @app.route('/sport')
 def sport():
     if 'loggedin' in session:
-        return render_template('sport.html')
+        return render_template('sport.html', username=session['username'])
     else:
-        return redirect(url_for('login'))
+        return redirect(url_for('login' , username=session['username']))
 
 
 @app.route('/join')
 def join():
     if 'loggedin' in session:
-        return render_template('join.html')
+        return render_template('join.html', username=session['username'])
     else:
-        return redirect(url_for('login'))
+        return redirect(url_for('login', username=session['username']))
 
 
 @app.route('/account')
 def account():
     if 'loggedin' in session:
-        return render_template('account.html')
+        user_id = session['user_id']
+
+        connection = get_db_connection()
+        cursor = connection.cursor()
+
+        try:
+            # Wrap user_id in a tuple
+            cursor.execute("SELECT username, email, phone, bio, ability1, ability2, ability3 FROM users WHERE user_id = %s", (user_id,))
+            user = cursor.fetchone()
+            if user:
+                return render_template('account.html', user=user, username=session['username'])
+            else:
+                flash('User not found.', 'danger')
+                return redirect(url_for('login'))
+        except Exception as e:
+            flash(f'Error fetching account details: {str(e)}', 'danger')
+            return redirect(url_for('login'))
+        finally:
+            connection.close()
     else:
         return redirect(url_for('login'))
+
 
 
 # Route for logout
