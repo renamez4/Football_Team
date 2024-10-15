@@ -43,7 +43,7 @@ def login_register():
         cursor.close()
         connection.close()
 
-        if user and bcrypt.checkpw(password, user['password'].encode('utf-8')):  # Check password
+        if user and bcrypt.checkpw(password, user['password'].encode('utf-8')): 
             # Set session data
             session['loggedin'] = True
             session['username'] = user['username']
