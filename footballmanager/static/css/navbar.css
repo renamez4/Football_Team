@@ -121,26 +121,38 @@ nav ul li a:hover {
     justify-content: center;
     gap: 20px;
 }
-
-.btn {
-    background-color: #F39C12;
-    color: #FFFFFF;
-    padding: 15px 40px;
-    text-decoration: none;
-    font-size: 1.5em;
-    border-radius: 50px;
-    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+.logout-btn {
+    display: inline-block;
+    /* ทำให้เป็น block แบบ inline */
+    padding: 10px 20px;
+    /* กำหนดพื้นที่ด้านใน */
+    font-size: 16px;
+    /* ขนาดตัวอักษร */
     font-weight: bold;
+    /* ทำให้ตัวอักษรหนา */
+    color: white;
+
+    /* กรอบสีแดง */
+    border-radius: 8px;
+    /* โค้งมนมุม */
+    text-decoration: none;
+    /* ลบขีดเส้นใต้ */
+    transition: all 0.3s ease;
+    /* เพิ่มการเปลี่ยนแปลงนุ่มนวล */
 }
 
-.btn:hover {
-    background-color: #E67E22;
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+.logout-btn:hover {
+    background-color: #F39C12;
+    /* สีพื้นหลังเป็นสีส้มเมื่อ hover */
+    border-color: #F39C12;
+    color: black;
+    /* เปลี่ยนสีกรอบเมื่อ hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* เพิ่มเงาเมื่อ hover */
 }
 
-.btn:active {
-    transform: translateY(0);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+.logout-btn:active {
+    background-color: #cc7000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(2px);
 }

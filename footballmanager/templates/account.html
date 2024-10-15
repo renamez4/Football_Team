@@ -17,9 +17,9 @@
             <ul>
                 <li><a href="/index">Home</a></li>
                 <li><a href="/sport">Sport</a></li>
-                <li><a href="/join">Team</a></li>
+                <li><a href="/viewteam">Team</a></li>
             </ul>
-            <li><a href="/logout">Logout</a></li>
+            <a href="/logout" class="logout-btn">Logout</a>
             <a href="/account" class="account">Account</a>
         </nav>
     </header>
@@ -46,33 +46,71 @@
             <div class="ability-container">
                 <label for="ability1">Ability1</label>
                 <select id="ability1" name="ability1">
-                    <option value="ability1">begin</option>
-                    <option value="ability2">hard</option>
-                    <option value="ability3">expert</option>
+                    <option value="GK">GK</option>
+                    <option value="RB">RB</option>
+                    <option value="LB">LB</option>
+                    <option value="CB">CB</option>
+                    <option value="RWB">RWB</option>
+                    <option value="LWB">LWB</option>
+                    <option value="CDM">CDM</option>
+                    <option value="CM">CM</option>
+                    <option value="CAM">CAM</option>
+                    <option value="RM">RM</option>
+                    <option value="LM">LM</option>
+                    <option value="RW">RW</option>
+                    <option value="LW">LW</option>
+                    <option value="ST">ST</option>
+                    <option value="CF">CF</option>
                 </select>
 
                 <label for="ability2">Ability2</label>
                 <select id="ability2" name="ability2">
-                    <option value="ability1">begin</option>
-                    <option value="ability2">hard</option>
-                    <option value="ability3">expert</option>
+                    <option value="GK">GK</option>
+                    <option value="RB">RB</option>
+                    <option value="LB">LB</option>
+                    <option value="CB">CB</option>
+                    <option value="RWB">RWB</option>
+                    <option value="LWB">LWB</option>
+                    <option value="CDM">CDM</option>
+                    <option value="CM">CM</option>
+                    <option value="CAM">CAM</option>
+                    <option value="RM">RM</option>
+                    <option value="LM">LM</option>
+                    <option value="RW">RW</option>
+                    <option value="LW">LW</option>
+                    <option value="ST">ST</option>
+                    <option value="CF">CF</option>
                 </select>
 
                 <label for="ability3">Ability3</label>
                 <select id="ability3" name="ability3">
-                    <option value="ability1">begin</option>
-                    <option value="ability2">hard</option>
-                    <option value="ability3">expert</option>
+                    <option value="GK">GK</option>
+                    <option value="RB">RB</option>
+                    <option value="LB">LB</option>
+                    <option value="CB">CB</option>
+                    <option value="RWB">RWB</option>
+                    <option value="LWB">LWB</option>
+                    <option value="CDM">CDM</option>
+                    <option value="CM">CM</option>
+                    <option value="CAM">CAM</option>
+                    <option value="RM">RM</option>
+                    <option value="LM">LM</option>
+                    <option value="RW">RW</option>
+                    <option value="LW">LW</option>
+                    <option value="ST">ST</option>
+                    <option value="CF">CF</option>
                 </select>
             </div>
 
         </div>
-        <div class="image-upload">
+        <div class="image-upload" id="image-upload">
             <label for="file-input">
-                <img src="/mnt/data/image.png" alt="Upload Image" id="profile-picture">
+                <span class="add-icon">+</span> <!-- ไอคอน + -->
+                <img src="" alt="Upload Image" id="profile-picture"> <!-- ภาพที่แสดง -->
             </label>
             <input id="file-input" type="file" accept="image/*" onchange="previewImage(event)">
         </div>
+        
     </div>
     <button type="submit">Submit</button>
 
@@ -81,7 +119,15 @@
             var reader = new FileReader();
             reader.onload = function () {
                 var output = document.getElementById('profile-picture');
-                output.src = reader.result;
+                output.src = reader.result; // ตั้งค่าภาพที่แสดง
+                output.style.display = "block"; // แสดงภาพเมื่อมีการเลือก
+                document.querySelector('.add-icon').style.display = "none"; // ซ่อนไอคอน +
+
+                // ซ่อนกรอบเมื่อมีการเลือกภาพ
+                var imageUpload = document.getElementById('image-upload');
+                imageUpload.style.border = "none"; // ซ่อนขอบเส้นประ
+                imageUpload.style.backgroundColor = "transparent"; // ปรับพื้นหลังให้โปร่งใส
+                imageUpload.style.opacity = "1"; // ทำให้กรอบที่ซ่อนยังคงมองเห็นภาพ
             };
             reader.readAsDataURL(event.target.files[0]);
         }

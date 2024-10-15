@@ -17,9 +17,9 @@
             <ul>
                 <li><a href="/index">Home</a></li>
                 <li><a href="/sport">Sport</a></li>
-                <li><a href="/join">Team</a></li>
+                <li><a href="/viewteam">Team</a></li>
             </ul>
-            <li><a href="/logout">Logout</a></li>
+            <a href="/logout" class="logout-btn">Logout</a>
             <a href="/account" class="account">Account</a>
         </nav>
     </header>
@@ -27,8 +27,7 @@
     <div class="container">
         <aside class="sidebar">
             <ul>
-                <li><a href="#">Team</a></li>
-                <li><a href="#">List Team</a></li>
+                <li><a href="/viewteam">List Team</a></li>
                 <li><a href="/create">New Team</a></li>
             </ul>
         </aside>
@@ -37,12 +36,6 @@
             <!-- ฟอร์มสร้างทีมฟุตบอล -->
             <div class="team-info">
                 <h2>Create Football Team</h2>
-                <div class="image-upload">
-                    <label for="file-input">
-                        <img src="/mnt/data/image.png" alt="Upload Image" id="profile-picture">
-                    </label>
-                    <input id="file-input" type="file" accept="image/*" onchange="previewImage(event)">
-                </div>
 
                 <form action="/create" method="POST">
                     <!-- ชื่อทีม -->
@@ -104,16 +97,30 @@
                     <!-- ปุ่มสร้างทีม -->
                     <button type="submit">Create Team</button>
                 </form>
-
             </div>
         </section>
+        <div class="image-upload" id="image-upload">
+            <label for="file-input">
+                <span class="add-icon">+</span> <!-- ไอคอน + -->
+                <img src="" alt="Upload Image" id="profile-picture"> <!-- ภาพที่แสดง -->
+            </label>
+            <input id="file-input" type="file" accept="image/*" onchange="previewImage(event)">
+        </div>
     </div>
     <script>
         function previewImage(event) {
             var reader = new FileReader();
             reader.onload = function () {
                 var output = document.getElementById('profile-picture');
-                output.src = reader.result;
+                output.src = reader.result; // ตั้งค่าภาพที่แสดง
+                output.style.display = "block"; // แสดงภาพเมื่อมีการเลือก
+                document.querySelector('.add-icon').style.display = "none"; // ซ่อนไอคอน +
+
+                // ซ่อนกรอบเมื่อมีการเลือกภาพ
+                var imageUpload = document.getElementById('image-upload');
+                imageUpload.style.border = "none"; // ซ่อนขอบเส้นประ
+                imageUpload.style.backgroundColor = "transparent"; // ปรับพื้นหลังให้โปร่งใส
+                imageUpload.style.opacity = "1"; // ทำให้กรอบที่ซ่อนยังคงมองเห็นภาพ
             };
             reader.readAsDataURL(event.target.files[0]);
         }

@@ -9,6 +9,7 @@
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 30px;
+    position: relative;
 }
 
 .sidebar {
@@ -52,9 +53,12 @@
     justify-content: space-between;
     position: relative;
 }
+
 .team-info textarea {
-    resize: none; /* ป้องกันการขยายขนาดของ textarea */
+    resize: none;
+    /* ป้องกันการขยายขนาดของ textarea */
 }
+
 .team-info {
     width: 100%;
     display: flex;
@@ -72,8 +76,10 @@
     width: 120px;
     height: auto;
     position: absolute;
-    top: 20px; /* ระยะห่างจากด้านบนของกรอบ content */
-    right: 20px; /* ระยะห่างจากด้านขวาของกรอบ content */
+    top: 20px;
+    /* ระยะห่างจากด้านบนของกรอบ content */
+    right: 20px;
+    /* ระยะห่างจากด้านขวาของกรอบ content */
     margin-bottom: 20px;
 }
 
@@ -84,13 +90,17 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    position: absolute; /* ใช้ absolute เพื่อจัดวางปุ่ม */
-    bottom: 20px; /* ระยะห่างจากขอบล่าง */
-    right: 20px; /* ระยะห่างจากขอบขวา */
+    position: absolute;
+    /* ใช้ absolute เพื่อจัดวางปุ่ม */
+    bottom: 20px;
+    /* ระยะห่างจากขอบล่าง */
+    right: 20px;
+    /* ระยะห่างจากขอบขวา */
 }
 
-.team-info input[type="text"], .team-info textarea {
-    width: 30%; 
+.team-info input[type="text"],
+.team-info textarea {
+    width: 30%;
     padding: 5px;
     margin-top: 5px;
     margin-bottom: 15px;
@@ -99,9 +109,11 @@
     box-sizing: border-box;
     font-size: 16px;
 }
+
 .team-info button:hover {
     background-color: #45a049;
 }
+
 /* Adding some responsive design for better handling on smaller screens */
 @media (max-width: 768px) {
     .container {
@@ -119,23 +131,41 @@
 }
 
 .image-upload {
-    /* flex: 0 0 150px;  */
-    text-align: right;
-    margin-left: 10px; 
+    border: 2px dashed #007BFF;
+    border-radius: 10px;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute; /* ใช้ตำแหน่ง absolute เพื่อยึดตาม .container */
+    top: 20px; /* ระยะห่างจากด้านบน */
+    right: 20px; /* ระยะห่างจากด้านขวา */
+    cursor: pointer;
+    overflow: hidden;
+    transition: border 0.3s ease, opacity 0.3s ease;
+    top: 50px; /* ระยะห่างจากด้านบน */
+    right: 50px; /* ระยะห่างจากด้านขวา */
 }
 
 .image-upload img {
     width: 100%;
-    height: auto;
-    max-width: 150px; 
-    max-height: 150px;
+    height: 100%;
     object-fit: cover;
     border-radius: 10px;
-    cursor: pointer;
-    border: 2px solid #ccc;
-    padding: auto
+    display: none; /* เริ่มต้นให้ไม่แสดงภาพ */
 }
 
-.image-upload input[type="file"] {
-    display: none;
+.add-icon {
+    font-size: 50px;
+    color: #007BFF;
+    display: block;
+}
+
+input[type="file"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
 }

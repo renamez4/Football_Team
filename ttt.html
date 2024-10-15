@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload</title>
+    <style>
+        .image-upload {
+            border: 2px dashed #007BFF; /* กรอบสี่เหลี่ยมแบบประดับ */
+            border-radius: 10px; /* มุมกรอบมน */
+            width: 200px; /* กำหนดความกว้าง */
+            height: 200px; /* กำหนดความสูง */
+            display: flex; /* ใช้ Flexbox สำหรับการจัดแนว */
+            align-items: center; /* จัดแนวกลางในแนวตั้ง */
+            justify-content: center; /* จัดแนวกลางในแนวนอน */
+            position: relative; /* สำหรับการวางตำแหน่งของ input */
+            cursor: pointer; /* เปลี่ยนเคอร์เซอร์เป็น pointer */
+            background-color: #f8f9fa; /* สีพื้นหลังกรอบ */
+            overflow: hidden; /* ซ่อนส่วนที่เกิน */
+            transition: border 0.3s ease, opacity 0.3s ease; /* การเปลี่ยนแปลงขอบและความโปร่งใส */
+        }
+
+        .image-upload img {
+            width: 100%; /* ความกว้างเต็มที่ */
+            height: 100%; /* ความสูงเต็มที่ */
+            object-fit: cover; /* ให้ภาพเต็มกรอบโดยไม่เสียสัดส่วน */
+            border-radius: 10px; /* มุมกรอบมนของภาพ */
+            display: none; /* เริ่มต้นให้ไม่แสดงภาพ */
+        }
+
+        .add-icon {
+            font-size: 50px; /* ขนาดของไอคอน + */
+            color: #007BFF; /* สีของไอคอน */
+            display: block; /* ทำให้ไอคอนแสดง */
+        }
+
+        input[type="file"] {
+            position: absolute; /* วางตำแหน่ง input ให้อยู่เหนือกรอบ */
+            width: 100%; /* ความกว้างเต็มที่ */
+            height: 100%; /* ความสูงเต็มที่ */
+            opacity: 0; /* ทำให้ input มองไม่เห็น */
+            cursor: pointer; /* เปลี่ยนเคอร์เซอร์เป็น pointer */
+        }
+    </style>
+</head>
+<body>
+
+<div class="image-upload" id="image-upload">
+    <label for="file-input">
+        <span class="add-icon">+</span> <!-- ไอคอน + -->
+        <img src="" alt="Upload Image" id="profile-picture"> <!-- ภาพที่แสดง -->
+    </label>
+    <input id="file-input" type="file" accept="image/*" onchange="previewImage(event)">
+</div>
+
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            var output = document.getElementById('profile-picture');
+            output.src = reader.result; // ตั้งค่าภาพที่แสดง
+            output.style.display = "block"; // แสดงภาพเมื่อมีการเลือก
+            document.querySelector('.add-icon').style.display = "none"; // ซ่อนไอคอน +
+
+            // ซ่อนขอบเส้นประเมื่อมีการเลือกภาพ
+            var imageUpload = document.getElementById('image-upload');
+            imageUpload.style.border = "none"; // ซ่อนขอบเส้นประ
+            imageUpload.style.opacity = "0"; // ปรับความโปร่งใส
+            setTimeout(() => {
+                imageUpload.style.display = "none"; // ซ่อนกรอบ
+            }, 300); // รอให้การเปลี่ยนแปลงความโปร่งใสเสร็จสิ้น
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
+
+</body>
+</html>

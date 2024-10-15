@@ -55,10 +55,6 @@
 }
 
 .wrapper .form-box.login {
-    /* display: none; */
-}
-
-.wrapper .form-box.login {
     transition: transform 0.18s ease;
     transform: translateX(0);
 }
@@ -160,4 +156,29 @@
 
 .login-register p a:hover {
     text-decoration: underline;
+}
+
+.Pop {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    background-color: #1C1C1C;
+}
+
+.Pop:hover {
+    background-color: #F39C12;
+    color: black;
+}
+
+.Pop:active {
+    transform: scale(0.95);
+    /* ขนาดปุ่มจะเล็กลงเมื่อกด */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* เพิ่มเงาเบาเมื่อกด */
 }
