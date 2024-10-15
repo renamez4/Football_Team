@@ -27,46 +27,48 @@
     <div class="account-container">
         <div class="account-details">
             <h2>Account</h2>
-            <form action="/accountmodify" method="POST"></form>
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username">
-
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password">
-
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email">
-
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone">
-
-            <label for="bio">Bio</label>
-            <textarea id="bio" name="bio" rows="4"></textarea>
-
-            <div class="ability-container">
-                <label for="ability1">Ability1</label>
-                <select id="ability1" name="ability1">
-                    <option value="ability1">begin</option>
-                    <option value="ability2">hard</option>
-                    <option value="ability3">expert</option>
-                </select>
-
-                <label for="ability2">Ability2</label>
-                <select id="ability2" name="ability2">
-                    <option value="ability1">begin</option>
-                    <option value="ability2">hard</option>
-                    <option value="ability3">expert</option>
-                </select>
-
-                <label for="ability3">Ability3</label>
-                <select id="ability3" name="ability3">
-                    <option value="ability1">begin</option>
-                    <option value="ability2">hard</option>
-                    <option value="ability3">expert</option>
-                </select>
-            </div>
-
+            <!-- Form starts here -->
+            <form action="/accountmodify" method="POST">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+    
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+    
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+    
+                <label for="bio">Bio</label>
+                <textarea id="bio" name="bio" rows="4"></textarea>
+    
+                <div class="ability-container">
+                    <label for="ability1">Ability1</label>
+                    <select id="ability1" name="ability1">
+                        <option value="begin">Begin</option>
+                        <option value="hard">Hard</option>
+                        <option value="expert">Expert</option>
+                    </select>
+    
+                    <label for="ability2">Ability2</label>
+                    <select id="ability2" name="ability2">
+                        <option value="begin">Begin</option>
+                        <option value="hard">Hard</option>
+                        <option value="expert">Expert</option>
+                    </select>
+    
+                    <label for="ability3">Ability3</label>
+                    <select id="ability3" name="ability3">
+                        <option value="begin">Begin</option>
+                        <option value="hard">Hard</option>
+                        <option value="expert">Expert</option>
+                    </select>
+                </div>
+    
+                <!-- Submit button inside the form -->
+                <button type="submit" class="btn-login" name="action_type" value="modify">Modify</button>
+            </form> <!-- Closing the form tag here -->
         </div>
+        
         <div class="image-upload">
             <label for="file-input">
                 <img src="/mnt/data/image.png" alt="Upload Image" id="profile-picture">
@@ -74,8 +76,7 @@
             <input id="file-input" type="file" accept="image/*" onchange="previewImage(event)">
         </div>
     </div>
-    <button type="submit">Submit</button>
-
+    
     <script>
         function previewImage(event) {
             var reader = new FileReader();

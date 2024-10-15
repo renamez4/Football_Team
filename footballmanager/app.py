@@ -46,6 +46,7 @@ def login_register():
         if user and bcrypt.checkpw(password, user['password'].encode('utf-8')): 
             # Set session data
             session['loggedin'] = True
+            session['user_id'] = user['user_id']
             session['username'] = user['username']
             flash('Success to login')
             return redirect(url_for('index'))
@@ -82,8 +83,54 @@ def login_register():
         connection.close()
         return redirect(url_for('login'))
 
-# @app.route('/accountmodify', methods=['POST'])
-# def accountmodify():
+@app.route('/accountmodify', methods=['POST'])
+def accountmodify():
+    if 'loggedin' in session:
+        action_type = request.form.get('action_type')
+
+        if action_type == 'modify':
+            user_id = session['user_id']
+
+            username = request.form.get('username')
+            email = request.form.get('email')
+            phone = request.form.get('phone')
+            bio = request.form.get('bio')
+            ability1 = request.form.get('ability1')
+            ability2 = request.form.get('ability2')
+            ability3 = request.form.get('ability3')
+
+            connection = get_db_connection()
+            cursor = connection.cursor()
+
+            try:
+                # Check if the new email already exists for another user
+                cursor.execute('SELECT * FROM users WHERE email = %s', (email,))
+                existing_user = cursor.fetchone()
+
+                if existing_user:
+                    flash('Email is already taken by another account.', 'danger')
+                    return redirect(url_for('index'))
+
+                # Update user details if email is unique
+                cursor.execute("""
+                    UPDATE users SET username = ?, email = ?, phone = ?, bio = ?, 
+                                    ability1 = ?, ability2 = ?, ability3 = ?
+                    WHERE user_id = ?
+                """, (username, email, phone, bio, ability1, ability2, ability3, user_id))
+
+                connection.commit()
+
+                flash('Account updated successfully!', 'success')
+            except Exception as e:
+                connection.rollback()
+                flash(f'Error updating account: {str(e)}', 'danger')
+            finally:
+                connection.close()
+
+            return redirect(url_for('account'))
+    else:
+        return redirect(url_for('login'))
+
 
 @app.route('/index')
 def index():
