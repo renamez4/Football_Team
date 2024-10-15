@@ -3,6 +3,7 @@ import mysql.connector
 import os
 from dotenv import load_dotenv
 import bcrypt
+import json
 load_dotenv()
 
 app = Flask(__name__)
@@ -140,56 +141,53 @@ def index():
     else:
         return redirect(url_for('login'))
 
-
-@app.route('/create', methods=['GET', 'POST'])
+@app.route('/create')
 def create():
     if 'loggedin' in session:
-        if request.method == 'POST':
-            team_name = request.form['team_name']
-            description = request.form['description']  
-            players = []
-            substitutes = []
-
-            for i in range(1, 12):
-                position = request.form[f'player{i}']
-                players.append((position, f'Player {i}'))
-
-            for i in range(1, 6):
-                sub_position = request.form[f'sub{i}']
-                substitutes.append((sub_position, f'Substitute {i}'))
-
-            connection = get_db_connection()
-            cursor = connection.cursor()
-
-            try:
-                for position, player_name in players:
-                    cursor.execute(
-                        "INSERT INTO create_team (player_position, player_name, team_name, description) VALUES (%s, %s, %s, %s)",
-                        (position, player_name, team_name, description)
-                    )
-
-                for sub_position, sub_name in substitutes:
-                    cursor.execute(
-                        "INSERT INTO substitutes (player_position, player_name, team_name) VALUES (%s, %s, %s)",
-                        (sub_position, sub_name, team_name)
-                    )
-
-                connection.commit()
-                flash(f'Team {team_name} created successfully!', 'success')
-
-            except Exception as e:
-                connection.rollback()
-                flash(f'Error: {str(e)}', 'danger')
-
-            finally:
-                cursor.close()
-                connection.close()
-
-            return redirect(url_for('viewteam'))
-
         return render_template('create.html', username=session['username'])
     else:
         return redirect(url_for('login'))
+
+@app.route('/createteam', methods=['GET', 'POST'])
+def createteam():
+    if 'loggedin' in session:
+        action_type = request.form.get('action_type')
+        if action_type == 'create-naja':
+            username = session['username']
+            team_name = request.form.get('team_name') 
+            players = [
+                request.form.get(f'player{i}') for i in range(1, 12)
+            ]
+            substitutes = [
+                request.form.get(f'sub{i}') for i in range(1, 6)
+            ]
+            description = request.form.get('description')
+
+            team_data = {
+                'players': players,
+                'substitutes': substitutes
+            }
+
+            connection = get_db_connection()
+            cursor = connection.cursor()
+            try:
+                cursor.execute("""
+                    INSERT INTO create_team (owner, team_name, teamdata, description)
+                    VALUES (%s, %s, %s, %s)
+                """, (username, team_name, json.dumps(team_data), description))
+
+                connection.commit()
+                flash('Team created successfully!', 'success')
+            except Exception as e:
+                connection.rollback()
+                flash(f'Error creating team: {str(e)}', 'danger')
+            finally:
+                connection.close()
+            return redirect(url_for('join')) 
+
+    else:
+        return redirect(url_for('login'))
+
 
 
 @app.route('/viewteam', methods=['GET', 'POST'])
@@ -243,10 +241,40 @@ def sport():
 @app.route('/join')
 def join():
     if 'loggedin' in session:
-        return render_template('join.html', username=session['username'])
-    else:
-        return redirect(url_for('login', username=session['username']))
+        username = session['username']
 
+        connection = get_db_connection()
+        cursor = connection.cursor()
+
+        try:
+            # Fetch the team data for the logged-in user
+            cursor.execute("""
+                SELECT owner, team_name, teamdata, description 
+                FROM create_team 
+                WHERE owner = %s
+            """, (username,))
+            team = cursor.fetchone()
+
+            if team:
+                # Parse the teamdata from JSON format
+                teamdata = json.loads(team[2])  # team[2] corresponds to the 'teamdata' column
+
+                # Pass the team data to the template
+                return render_template('join.html', 
+                                       username=session['username'],
+                                       team_name=team[1],
+                                       teamdata=teamdata,
+                                       description=team[3])
+            else:
+                flash('No team found for this user.', 'danger')
+                return redirect(url_for('create'))  # Redirect to create team if none found
+        except Exception as e:
+            flash(f'Error fetching team data: {str(e)}', 'danger')
+            return redirect(url_for('login'))
+        finally:
+            connection.close()
+    else:
+        return redirect(url_for('login'))
 
 @app.route('/account')
 def account():

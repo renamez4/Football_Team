@@ -25,6 +25,39 @@
 
     <div class="container">
         <aside class="sidebar">
+        <h3>Team</h3>
+        <ul>
+            <li><a href="#">{{ team_name }}</a></li>
+        </ul>
+        </aside>
+        <p>{{ description }}</p>
+    
+        <h3>ตัวจริง (Players)</h3>
+        <div class="form-box">
+            <div class="field">
+                <ul>
+                    {% for player in teamdata.players %}
+                    <li>{{ player }}<br><br></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <h3>ตัวสำรอง (Substitutes)</h3>
+        <div class="form-box">
+            <div class="field">
+                <ul>
+                    {% for sub in teamdata.substitutes %}
+                    <li>{{ sub }}<br><br></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <p>Owner: {{ username }}</p>
+    </div>
+    
+    <div class="container">
+        <aside class="sidebar">
             <h3>Team</h3>
             <ul>
                 <li><a href="#">Team 1</a></li>

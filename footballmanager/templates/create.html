@@ -37,7 +37,7 @@
             <div class="team-info">
                 <h2>Create Football Team</h2>
 
-                <form action="/create" method="POST">
+                <form action="/createteam" method="POST">
                     <!-- ชื่อทีม -->
                     <label for="team_name">Team Name:</label>
                     <input type="text" id="team_name" name="team_name" required><br><br>
@@ -94,8 +94,7 @@
                     <textarea id="description" name="description" rows="4" cols="50"
                         placeholder="Enter a description about the team"></textarea><br><br>
 
-                    <!-- ปุ่มสร้างทีม -->
-                    <button type="submit">Create Team</button>
+                    <button type="submit" name="action_type" value="create-naja">Create Team</button>
                 </form>
             </div>
         </section>
