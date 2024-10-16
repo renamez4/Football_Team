@@ -3,6 +3,7 @@ import mysql.connector
 import os
 from dotenv import load_dotenv
 import bcrypt
+
 load_dotenv()
 
 app = Flask(__name__)

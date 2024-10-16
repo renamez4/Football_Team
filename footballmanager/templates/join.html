@@ -16,7 +16,7 @@
             <ul>
                 <li><a href="/index">Home</a></li>
                 <li><a href="/sport">Sport</a></li>
-                <li><a href="/viewteam">Team</a></li>
+                <li><a href="/viewteam">Team Overview</a></li>
             </ul>
             <a href="/logout" class="logout-btn">Logout</a>
             <a href="/account" class="account">{{ username }}</a>
@@ -27,13 +27,20 @@
         <aside class="sidebar">
             <h3>Team</h3>
             <ul>
-                <li><a href="#">Team 1</a></li>
-                <li><a href="#">Team 2</a></li>
-                <li><a href="#">Team 3</a></li>
+                <li><a href="#">Liverpool </a></li>
+                <!-- <li><a href="#"></a></li>
+                <li><a href="#"></a></li> -->
             </ul>
         </aside>
         <div class="main-content">
-            <h2>Team Name</h2>
+            <div class="image-upload" id="image-upload">
+                <label for="file-input">
+                    <span class="add-icon">+</span> <!-- ไอคอน + -->
+                    <img src="" alt="Upload Image" id="profile-picture"> <!-- ภาพที่แสดง -->
+                </label>
+                <input id="file-input" type="file" accept="image/*" onchange="previewImage(event)">
+            </div>
+            <h2>Liverpool</h2>
             <h3>ตัวจริง</h3>
             <div class="form-box">
                 <div class="field">
@@ -104,8 +111,11 @@
                     <input type="text" id="phoneSub3" name="phoneSub3" value="555-555-5555" required><br><br>
                     <input type="text" id="phoneSub4" name="phoneSub4" value="444-444-4444" required><br><br>
                     <input type="text" id="phoneSub5" name="phoneSub5" value="333-333-3333" required><br><br>
-                </div>
+                </div>     
             </div>
+            <h3>Description</h3>
+                    <textarea id="description" name="description" rows="4" cols="50"
+                        placeholder="Enter a description about the team"></textarea><br><br>
         </div>
     </div>
 </body>

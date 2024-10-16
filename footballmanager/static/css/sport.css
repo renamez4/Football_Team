@@ -77,3 +77,46 @@ h2 {
         font-size: 14px;
     }
 }
+
+h3 {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.content {
+    display: none;
+    background-color: white;
+    padding: 15px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: max-height 0.2s ease-out;
+}
+
+#toggle-rules:checked + .toggle-label + .content,
+#toggle-strategy:checked + .toggle-label + .content {
+    display: block;
+}
+
+/* Styling for checkboxes */
+input[type="checkbox"] {
+    display: none;
+}
+
+.toggle-label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Customizing the checkbox */
+.toggle-label:before {
+    content: "▼ "; /* Arrow down */
+    font-weight: bold;
+}
+
+input[type="checkbox"]:checked + .toggle-label:before {
+    content: "▲ "; /* Arrow up */
+}

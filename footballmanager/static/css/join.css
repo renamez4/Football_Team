@@ -9,6 +9,7 @@
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 30px;
+    position: relative;
 }
 
 .sidebar {
@@ -50,8 +51,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    text-align: center
-    ;
+    text-align: center;
+    position: relative;
+    
 }
 
 .main-content h2 {
@@ -96,4 +98,44 @@ input[type="text"] {
     text-align: center;
     flex-direction: column;
     align-items: center;
+}
+
+.image-upload {
+    border: 2px dashed #007BFF;
+    border-radius: 10px;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute; /* ใช้ตำแหน่ง absolute เพื่อยึดตาม .container */
+    top: 20px; /* ระยะห่างจากด้านบน */
+    right: 20px; /* ระยะห่างจากด้านขวา */
+    cursor: pointer;
+    overflow: hidden;
+    transition: border 0.3s ease, opacity 0.3s ease;
+    top: 10px; /* ระยะห่างจากด้านบน */
+    right: 30px; /* ระยะห่างจากด้านขวา */
+}
+
+.image-upload img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    display: none; /* เริ่มต้นให้ไม่แสดงภาพ */
+}
+
+.add-icon {
+    font-size: 50px;
+    color: #007BFF;
+    display: block;
+}
+
+input[type="file"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
 }
