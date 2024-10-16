@@ -17,7 +17,11 @@
             <ul>
                 <li><a href="/index">Home</a></li>
                 <li><a href="/sport">Sport</a></li>
+<<<<<<< HEAD
+                <li><a href="/">Team Overview</a></li>
+=======
                 <li><a href="/viewteam">Team</a></li>
+>>>>>>> 142966ac09ff377219da58c6cf5d0af5c04354ae
             </ul>
             <a href="/logout" class="logout-btn">Logout</a>
             <a href="/account" class="account">{{ username }}</a>
@@ -27,6 +31,78 @@
     <div class="account-container">
         <div class="account-details">
             <h2>Account</h2>
+<<<<<<< HEAD
+            <form action="/accountmodify" method="POST"></form>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone">
+
+            <label for="bio">Bio</label>
+            <textarea id="bio" name="bio" rows="4"></textarea>
+
+            <div class="ability-container">
+                <label for="ability1">Ability1</label>
+                <select id="ability1" name="ability1">
+                    <option value="GK">GK</option>
+                    <option value="RB">RB</option>
+                    <option value="LB">LB</option>
+                    <option value="CB">CB</option>
+                    <option value="RWB">RWB</option>
+                    <option value="LWB">LWB</option>
+                    <option value="CDM">CDM</option>
+                    <option value="CM">CM</option>
+                    <option value="CAM">CAM</option>
+                    <option value="RM">RM</option>
+                    <option value="LM">LM</option>
+                    <option value="RW">RW</option>
+                    <option value="LW">LW</option>
+                    <option value="ST">ST</option>
+                    <option value="CF">CF</option>
+                </select>
+
+                <label for="ability2">Ability2</label>
+                <select id="ability2" name="ability2">
+                    <option value="GK">GK</option>
+                    <option value="RB">RB</option>
+                    <option value="LB">LB</option>
+                    <option value="CB">CB</option>
+                    <option value="RWB">RWB</option>
+                    <option value="LWB">LWB</option>
+                    <option value="CDM">CDM</option>
+                    <option value="CM">CM</option>
+                    <option value="CAM">CAM</option>
+                    <option value="RM">RM</option>
+                    <option value="LM">LM</option>
+                    <option value="RW">RW</option>
+                    <option value="LW">LW</option>
+                    <option value="ST">ST</option>
+                    <option value="CF">CF</option>
+                </select>
+
+                <label for="ability3">Ability3</label>
+                <select id="ability3" name="ability3">
+                    <option value="GK">GK</option>
+                    <option value="RB">RB</option>
+                    <option value="LB">LB</option>
+                    <option value="CB">CB</option>
+                    <option value="RWB">RWB</option>
+                    <option value="LWB">LWB</option>
+                    <option value="CDM">CDM</option>
+                    <option value="CM">CM</option>
+                    <option value="CAM">CAM</option>
+                    <option value="RM">RM</option>
+                    <option value="LM">LM</option>
+                    <option value="RW">RW</option>
+                    <option value="LW">LW</option>
+                    <option value="ST">ST</option>
+                    <option value="CF">CF</option>
+                </select>
+=======
             <form action="/accountmodify" method="POST">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" value="{{ user[0] }}" required>
@@ -106,6 +182,7 @@
                     </label>
                     <input id="file-input" type="file" accept="image/*" onchange="previewImage(event)">
                 </div>
+>>>>>>> 142966ac09ff377219da58c6cf5d0af5c04354ae
             </div>
             <button type="submit" name="action_type" value="modify">Submit</button>
             </form>

@@ -16,7 +16,7 @@
             <ul>
                 <li><a href="/index">Home</a></li>
                 <li><a href="/sport">Sport</a></li>
-                <li><a href="/viewteam">Team</a></li>
+                <li><a href="/viewteam">Team Overview</a></li>
             </ul>
             <a href="/logout" class="logout-btn">Logout</a>
             <a href="/account" class="account">{{ username }}</a>
@@ -31,6 +31,13 @@
             </ul>
         </aside>
         <div class="main-content">
+            <div class="image-upload" id="image-upload">
+                <label for="file-input">
+                    <span class="add-icon">+</span> <!-- ไอคอน + -->
+                    <img src="" alt="Upload Image" id="profile-picture"> <!-- ภาพที่แสดง -->
+                </label>
+                <input id="file-input" type="file" accept="image/*" onchange="previewImage(event)">
+            </div>
             <h2>Team Name</h2>
             <h3>ตัวจริง</h3>
             <div class="form-box">
@@ -104,8 +111,12 @@
                     <input type="text" id="phoneSub5" name="phoneSub5" value="333-333-3333" required><br><br>
                 </div>
             </div>
+            <h3>Description</h3>
+                    <textarea id="description" name="description" rows="4" cols="50"
+                        placeholder="Enter a description about the team"></textarea><br><br>
         </div>
     </div>
+
 </body>
 
 </html>
