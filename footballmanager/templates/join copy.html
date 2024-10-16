@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Team</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/join.css') }}">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <img src="/static/image/LOGO.png" alt="Football">
+            <ul>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/sport">Sport</a></li>
+                <li><a href="/viewteam">Team Overview</a></li>
+            </ul>
+            <a href="/logout" class="logout-btn">Logout</a>
+            <a href="/account" class="account">{{ username }}</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h3>Team</h3>
+            <ul>
+                {% for team in teams %}
+                <li><a href="{{ url_for('join', team_name=team[0]) }}">{{ team[0] }}</a></li>
+                {% endfor %}
+            </ul>
+        </aside>
+    
+        <div class="main-content">
+            {% if team_name %}
+            <h2>{{ team_name }}</h2>
+    
+            <h3>ตัวจริง (Players)</h3>
+            <div class="form-box">
+                <div class="field">
+                    <label for="position">Position</label>
+                    {% for playerposition in teamdata.position %}
+                    <input type="text" value="{{ playerposition }}" required><br><br> <!-- Display each player's position -->
+                    {% endfor %}
+                </div>
+                <div class="field">
+                    <label for="player-name">Player Name</label>
+                    {% for playerposition in teamdata.position %}
+                    <input type="text" value="{{ username }}" required><br><br> <!-- Display each player's name -->
+                    {% endfor %}
+                </div>
+                <div class="field">
+                    <label for="phone">Phone</label>
+                    {% for playerposition in teamdata.position %}
+                    <input type="text" value="{{ phone }}" required><br><br> <!-- Display each player's phone -->
+                    {% endfor %}
+                </div>
+            </div>
+    
+            <h3>ตัวสำรอง (Substitutes)</h3>
+            <div class="form-box">
+                <div class="field">
+                    <label for="position">Position</label>
+                    {% for sub in teamdata.substitutes %}
+                    <input type="text" value="{{ sub }}" required><br><br> <!-- Display substitute position -->
+                    {% endfor %}
+                </div>
+                <div class="field">
+                    <label for="player-name">Player Name</label>
+                    {% for sub in teamdata.substitutes %}
+                    <input type="text" value="{{ sub.name }}" required><br><br> <!-- Display substitute name -->
+                    {% endfor %}
+                </div>
+                <div class="field">
+                    <label for="phone">Phone</label>
+                    {% for sub in teamdata.substitutes %}
+                    <input type="text" value="{{ sub.phone }}" required><br><br> <!-- Display substitute phone -->
+                    {% endfor %}
+                </div>
+            </div>
+    
+            <p>Owner: {{ username }}</p>
+            <h3>Description</h3>
+            <div class="heartzone">{{ description }}</div>
+            {% else %}
+            <p>โปรดเลือกทีมจากเมนูด้านของมึง</p>
+            {% endif %}
+        </div>
+    </div>    
+</body>
+
+</html>

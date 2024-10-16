@@ -27,61 +27,47 @@
         <aside class="sidebar">
             <h3>Team</h3>
             <ul>
-                <li><a href="#">{{ team_name }}</a></li>
+                {% for team in teams %}
+                <li><a href="{{ url_for('join', team_name=team[0]) }}">{{ team[0] }}</a></li>
+                {% endfor %}
             </ul>
         </aside>
+    
         <div class="main-content">
+            {% if team_name %}
             <h2>{{ team_name }}</h2>
-
+    
             <h3>ตัวจริง (Players)</h3>
             <div class="form-box">
                 <div class="field">
-                    <label for="position">Position</label>
-                    {% for player in teamdata.players %}
-                    <input type="text" value="{{ player }}" required><br><br>
-                    {% endfor %}
-                </div>
-                <div class="field">
-                    <label for="position">Player Name</label>
-                    {% for player in teamdata.players %}
-                    <input type="text" value="{{ player }}" required><br><br>
-                    {% endfor %}
-                </div>
-                <div class="field">
-                    <label for="position">Phone</label>
-                    {% for player in teamdata.players %}
-                    <input type="text" value="{{ player }}" required><br><br>
-                    {% endfor %}
-                </div>
+                <form method="POST" action="{{ url_for('join') }}">
+                    <input type="hidden" name="team_name" value="{{ team_name }}">
+    
+                    
+                        <label for="position">Position</label>
+                        <input type="text" name="position" value="{{ selected_position }}" readonly required><br><br> 
+                    </div>
+                    <div class="field">
+                        <label for="player-name">Player Name</label>
+                        <input type="text" name="player_name" value="{{ username }}" readonly required><br><br> 
+                    </div>
+                    <div class="field">
+                        <label for="phone">Phone</label>
+                        <input type="text" name="phone" value="{{ phone }}" readonly required><br><br>
+                    </div>
+    
+                    <button type="submit">Join with this position</button>
+                </form>
             </div>
-
-
-            <h3>ตัวสำรอง (Substitutes)</h3>
-            <div class="form-box">
-                <div class="field">
-                    <label for="position">Position</label>
-                    {% for sub in teamdata.substitutes %}
-                    <input type="text" value="{{ sub }}" required><br><br>
-                    {% endfor %}
-                </div>
-                <div class="field">
-                    <label for="position">Player Name</label>
-                    {% for sub in teamdata.substitutes %}
-                    <input type="text" value="{{ sub }}" required><br><br>
-                    {% endfor %}
-                </div>
-                <div class="field">
-                    <label for="position">Phone</label>
-                    {% for sub in teamdata.substitutes %}
-                    <input type="text" value="{{ sub }}" required><br><br>
-                    {% endfor %}
-                </div>
-            </div>
+    
             <p>Owner: {{ username }}</p>
             <h3>Description</h3>
             <div class="heartzone">{{ description }}</div>
+            {% else %}
+            <p>โปรดเลือกทีมจากเมนูด้านซ้าย</p>
+            {% endif %}
         </div>
-    </div>
+    </div>         
 </body>
 
 </html>

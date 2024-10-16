@@ -4,6 +4,7 @@ import os
 from dotenv import load_dotenv
 import bcrypt
 import json
+import random
 load_dotenv()
 
 app = Flask(__name__)
@@ -47,8 +48,9 @@ def login_register():
         if user and bcrypt.checkpw(password, user['password'].encode('utf-8')): 
             # Set session data
             session['loggedin'] = True
-            session['user_id'] = str(user['user_id'])
+            session['user_id'] = user['user_id']
             session['username'] = user['username']
+            session['phone'] = user['phone']
             flash('Success to login')
             return redirect(url_for('index'))
         else:
@@ -155,19 +157,31 @@ def createteam():
         if action_type == 'create-naja':
             username = session['username']
             team_name = request.form.get('team_name') 
-            players = [
-                request.form.get(f'player{i}') for i in range(1, 12)
+
+            positions = [
+                {
+                    'position': request.form.get(f'position{i}'),
+                    'player_name': request.form.get(f'player_name{i}')
+                } 
+                for i in range(1, 12)
             ]
             substitutes = [
-                request.form.get(f'sub{i}') for i in range(1, 6)
+                {
+                    'position': request.form.get(f'sub{i}'),
+                    'player_name': request.form.get(f'sub_player_name{i}')
+                } 
+                for i in range(1, 6)
             ]
+
             description = request.form.get('description')
 
+            # Prepare data for the team
             team_data = {
-                'players': players,
+                'positions': positions,
                 'substitutes': substitutes
             }
 
+            # Database interaction
             connection = get_db_connection()
             cursor = connection.cursor()
             try:
@@ -183,12 +197,11 @@ def createteam():
                 flash(f'Error creating team: {str(e)}', 'danger')
             finally:
                 connection.close()
-            return redirect(url_for('join')) 
+
+            return redirect(url_for('join'))
 
     else:
         return redirect(url_for('login'))
-
-
 
 @app.route('/viewteam', methods=['GET', 'POST'])
 def viewteam():
@@ -229,7 +242,6 @@ def viewteam():
     else:
         return redirect(url_for('login'))
 
-
 @app.route('/sport')
 def sport():
     if 'loggedin' in session:
@@ -237,32 +249,103 @@ def sport():
     else:
         return redirect(url_for('login'))
 
-
-@app.route('/join')
+@app.route('/join', methods=['GET', 'POST'])
 def join():
     if 'loggedin' in session:
-        username = session['username']
-
         connection = get_db_connection()
         cursor = connection.cursor()
 
         try:
+            # Fetch all team names
+            cursor.execute("SELECT team_name FROM create_team")
+            teams = cursor.fetchall()  # Fetch all teams for the sidebar
+            
+            # Fetch user's abilities from the `users` table
             cursor.execute("""
-                SELECT owner, team_name, teamdata, description 
-                FROM create_team
-            """)
-            team = cursor.fetchone()
+                SELECT ability1, ability2, ability3 
+                FROM users 
+                WHERE username = %s
+            """, (session['username'],))
+            user_abilities = cursor.fetchone()
 
-            if team:
-                teamdata = json.loads(team[2])
-                return render_template('join.html', 
-                                       username=session['username'],
-                                       team_name=team[1],
-                                       teamdata=teamdata,
-                                       description=team[3])
+            if not user_abilities or all(ability is None for ability in user_abilities):
+                flash('User abilities not found or empty.', 'danger')
+                return redirect(url_for('join'))
+
+            position_map = {
+                'GK': 'Goalkeeper',
+                'RB': 'Right Back',
+                'RWB': 'Right Wing Back',
+                'CB': 'Center Back',
+                'LB': 'Left Back',
+                'LWB': 'Left Wing Back',
+                'RAM': 'Right Attacking Midfielder',
+                'RM': 'Right Midfielder',
+                'CM': 'Central Midfielder',
+                'CDM': 'Defensive Midfielder',
+                'LM': 'Left Midfielder',
+                'LAM': 'Left Attacking Midfielder',
+                'CAM': 'Attacking Midfielder',
+                'ST': 'Striker',
+                'CF': 'Center Forward',
+                'RW': 'Right Winger',
+                'LW': 'Left Winger',
+            }
+
+            # Randomly select one ability, ensuring there are valid options
+            valid_abilities = [ability for ability in user_abilities if ability]
+            selected_ability = random.choice(valid_abilities) if valid_abilities else None
+
+            # Map selected ability to its full name
+            selected_position = position_map.get(selected_ability, selected_ability)
+
+            # Handle form submission if a team is selected
+            if request.method == 'POST':
+                selected_team = request.form.get('team_name')
+                position = request.form.get('position')  # This will be the selected random ability
+
+                # Update team with the user's position
+                cursor.execute("""
+                    UPDATE create_team
+                    SET teamdata = JSON_SET(teamdata, '$.positions[0].player_name', %s)
+                    WHERE team_name = %s
+                """, (session['username'], selected_team))
+
+                connection.commit()
+                flash('Position assigned and saved successfully!', 'success')
+                return redirect(url_for('join'))
+
+            # If a specific team is selected, fetch its data
+            selected_team = request.args.get('team_name', None)
+            if selected_team:
+                cursor.execute("""
+                    SELECT owner, team_name, teamdata, description 
+                    FROM create_team 
+                    WHERE team_name = %s
+                """, (selected_team,))
+                team = cursor.fetchone()
+
+                if team:
+                    teamdata = json.loads(team[2])
+                    return render_template('join.html', 
+                                           username=session['username'],
+                                           phone=session['phone'],
+                                           teams=teams,
+                                           team_name=team[1],
+                                           teamdata=teamdata,
+                                           description=team[3],
+                                           selected_ability=selected_ability,
+                                           selected_position=selected_position)  # Pass the full position name
+                else:
+                    flash('Selected team not found.', 'danger')
+                    return redirect(url_for('join'))
             else:
-                flash('No team found for this user.', 'danger')
-                return redirect(url_for('create'))  # Redirect to create team if none found
+                return render_template('join.html', 
+                                       username=session['username'], 
+                                       teams=teams,
+                                       selected_ability=selected_ability,
+                                       selected_position=selected_position)  # Pass the full position name
+
         except Exception as e:
             flash(f'Error fetching team data: {str(e)}', 'danger')
             return redirect(url_for('login'))
