@@ -249,15 +249,15 @@ def join():
         try:
             cursor.execute("""
                 SELECT owner, team_name, teamdata, description 
-                FROM create_team 
-                WHERE owner = %s
-            """, (username,))
+                FROM create_team
+            """)
             team = cursor.fetchone()
 
             if team:
                 # Parse the teamdata from JSON format
                 teamdata = json.loads(team[2])  # team[2] corresponds to the 'teamdata' column
-
+                print(team)
+                print(teamdata)
                 # Pass the team data to the template
                 return render_template('join.html', 
                                        username=session['username'],
