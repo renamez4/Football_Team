@@ -254,11 +254,7 @@ def join():
             team = cursor.fetchone()
 
             if team:
-                # Parse the teamdata from JSON format
-                teamdata = json.loads(team[2])  # team[2] corresponds to the 'teamdata' column
-                print(team)
-                print(teamdata)
-                # Pass the team data to the template
+                teamdata = json.loads(team[2])
                 return render_template('join.html', 
                                        username=session['username'],
                                        team_name=team[1],
