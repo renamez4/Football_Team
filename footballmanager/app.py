@@ -235,7 +235,7 @@ def sport():
     if 'loggedin' in session:
         return render_template('sport.html', username=session['username'])
     else:
-        return redirect(url_for('login' , username=session['username']))
+        return redirect(url_for('login'))
 
 
 @app.route('/join')
@@ -247,7 +247,6 @@ def join():
         cursor = connection.cursor()
 
         try:
-            # Fetch the team data for the logged-in user
             cursor.execute("""
                 SELECT owner, team_name, teamdata, description 
                 FROM create_team 
